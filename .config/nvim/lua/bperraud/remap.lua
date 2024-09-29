@@ -58,19 +58,6 @@ end)
 vim.keymap.set("n", "<leader>t",":belowright split | terminal<CR>");
 
 
--- ToggleTerm
-
-function toggle_term_or_close()
-    -- Check if any terminal window is open
-    if vim.fn.empty(vim.fn.filter(vim.fn.range(1, vim.fn.winnr('$')), 'getwinvar(v:val, "&buftype") == "terminal"')) == 0 then
-        -- Close the terminal window
-        vim.cmd('silent! :q')
-    else
-        -- Open the terminal window
-        vim.cmd('ToggleTerm')
-    end
-end
-
 -- Toggle terminal window with F12 key
 --vim.api.nvim_set_keymap('n', '<F12>', '<cmd>lua toggle_term_or_close()<CR>', { noremap = true })
 
