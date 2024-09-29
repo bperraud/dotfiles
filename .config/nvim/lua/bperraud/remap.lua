@@ -54,6 +54,8 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- tooggle term
+vim.keymap.set("n", "<leader>t",":belowright split | terminal<CR>");
 
 
 -- ToggleTerm
