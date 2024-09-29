@@ -57,14 +57,4 @@ end)
 -- tooggle term
 vim.keymap.set("n", "<leader>t",":belowright split | terminal<CR>");
 
-
--- Toggle terminal window with F12 key
---vim.api.nvim_set_keymap('n', '<F12>', '<cmd>lua toggle_term_or_close()<CR>', { noremap = true })
-
---vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>ToggleTerm<CR>', { noremap = true })
---vim.api.nvim_set_keymap('i', '<leader>t', '<cmd>ToggleTerm<CR>', { noremap = true })
-
---vim.api.nvim_set_keymap('n', '<C-1>', '<C-\\><C-n>:ToggleTermClose<CR>', { noremap = true })
---vim.api.nvim_set_keymap('n', '<leader>t', '<C-\\><C-n>:ToggleTermClose<CR>', { noremap = true })
---vim.api.nvim_set_keymap('i', '<leader>t', '<C-\\><C-n>:ToggleTermClose<CR>', { noremap = true })
-
+vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");

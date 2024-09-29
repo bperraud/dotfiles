@@ -9,3 +9,19 @@ vim.cmd([[
   augroup END
 ]])
 
+-- Automatically enter Insert Mode when opening a terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "*",
+    callback = function()
+        vim.cmd("startinsert")
+    end,
+})
+
+vim.api.nvim_create_autocmd("FocusGained", {
+    pattern = "*",
+    callback = function()
+        if vim.bo.filetype == "terminal" then
+            vim.cmd("startinsert")
+        end
+    end,
+})
