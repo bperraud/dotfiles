@@ -6,18 +6,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set('v', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -33,8 +24,12 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 --vim.keymap.set("n", "<C-f>", "<cmd>silent !~/dotfiles/tmux-sessionizer<CR>")
+
+-- format code
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<C-s>", ':w<CR>');
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -57,22 +52,35 @@ local function toggle_nvim_tree_without_focus()
 end
 
 --vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-vim.keymap.set(
-    "n",
-    "<leader>e",
-    ":NvimTreeFocus<CR>", { silent = true }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>e",
+--     ":NvimTreeFocus<CR>", { silent = true }
+-- )
+
+vim.keymap.set("n", "<leader>e", function()
+    local current_win = vim.api.nvim_get_current_win()
+    -- Check if NvimTree is focused
+    if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
+        -- If NvimTree is focused, switch to the last window (your file)
+        vim.cmd("wincmd p") -- Switch to the previous window
+    else
+        -- If NvimTree is not focused, focus on NvimTree
+        vim.cmd("NvimTreeFocus")
+    end
+end, { silent = true })
 
 vim.keymap.set(
     "n",
-    "<C-n>",
-    toggle_nvim_tree_without_focus, { silent = true }
+    "<C-o>",
+    toggle_nvim_tree_without_focus, { noremap = true, silent = true }
+--   ":NvimTreeToggle<CR>", { noremap = true, silent = true }
 )
+
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
 
 
 -- tooggle term

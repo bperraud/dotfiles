@@ -23,3 +23,7 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+require('nvim-web-devicons').setup {
+    default = true;  -- Ensures that default icons are used
+}

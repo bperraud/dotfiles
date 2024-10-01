@@ -31,5 +31,3 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "90"
 
 vim.g.mapleader = " "
-
-
