@@ -31,7 +31,9 @@ return require('packer').startup(function(use)
   },
 }
 
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+
+  use('Mofiqul/vscode.nvim')
 
   -- comment
   use('tpope/vim-commentary')

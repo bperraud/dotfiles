@@ -77,8 +77,22 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+local terminal_buf_id = nil
 
--- tooggle term
-vim.keymap.set("n", "<leader>t", ":belowright split | terminal<CR>");
+local function toggle_term()
+    if vim.bo.buftype == "terminal" then
+        vim.cmd("q")
+        return
+    end
+    if terminal_buf_id and vim.api.nvim_buf_is_valid(terminal_buf_id) then
+        vim.cmd("belowright split | b" .. terminal_buf_id)
+    else
+        vim.cmd("belowright split | terminal")
+        terminal_buf_id = vim.api.nvim_get_current_buf()
+    end
+end
+
+vim.keymap.set("n", "<leader>t", toggle_term);
+-- vim.keymap.set("n", "<leader>t", ":belowright split | terminal<CR>");
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
