@@ -77,6 +77,10 @@ vim.keymap.set(
 --   ":NvimTreeToggle<CR>", { noremap = true, silent = true }
 )
 
+vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<BS>", "<gv", { noremap = true, silent = true })
+vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
+vim.keymap.set("n", "<BS>", "<<", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
