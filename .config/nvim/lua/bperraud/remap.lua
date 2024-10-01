@@ -51,21 +51,12 @@ local function toggle_nvim_tree_without_focus()
     vim.api.nvim_set_current_win(current_window_id)
 end
 
---vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
--- vim.keymap.set(
---     "n",
---     "<leader>e",
---     ":NvimTreeFocus<CR>", { silent = true }
--- )
 
 vim.keymap.set("n", "<leader>e", function()
     local current_win = vim.api.nvim_get_current_win()
-    -- Check if NvimTree is focused
     if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
-        -- If NvimTree is focused, switch to the last window (your file)
-        vim.cmd("wincmd p") -- Switch to the previous window
+        vim.cmd("wincmd p") -- Switch to previous window
     else
-        -- If NvimTree is not focused, focus on NvimTree
         vim.cmd("NvimTreeFocus")
     end
 end, { silent = true })
