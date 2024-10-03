@@ -29,7 +29,10 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- format code
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<C-s>", ':w<CR>');
+
+vim.keymap.set("n", "<C-s>", function()
+    vim.cmd("w")
+end, {noremap = true})
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -73,6 +76,7 @@ vim.keymap.set("v", "<BS>", "<gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
 vim.keymap.set("n", "<BS>", "<<", { noremap = true, silent = true })
 
+
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
@@ -96,3 +100,6 @@ vim.keymap.set("n", "<leader>t", toggle_term);
 -- vim.keymap.set("n", "<leader>t", ":belowright split | terminal<CR>");
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
+
+
+vim.keymap.set("n", "<C-b>", ":Telescope lsp_references<CR>");

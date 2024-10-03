@@ -5,8 +5,6 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -20,10 +18,25 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 })
 
 require('nvim-web-devicons').setup {
-    default = true;  -- Ensures that default icons are used
+	default = true;  -- Ensures that default icons are used
 }
+
+
+--keymap
+require("nvim-tree").setup({
+  on_attach = function(bufnr)
+    local api = require("nvim-tree.api")
+    -- Call the default `on_attach` first to include the default mappings
+    api.config.mappings.default_on_attach(bufnr)
+    -- Add your custom keymap for renaming
+    vim.keymap.set("n", "i", api.fs.rename, { buffer = bufnr, noremap = true, silent = true })
+  end,
+})
+
+-- -- empty setup using defaults
+-- require("nvim-tree").setup()
