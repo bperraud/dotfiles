@@ -31,8 +31,9 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-s>", function()
-    vim.cmd("w")
-end, {noremap = true})
+	vim.cmd("w")
+end, { noremap = true })
+
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -49,25 +50,25 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- )
 
 local function toggle_nvim_tree_without_focus()
-    local current_window_id = vim.api.nvim_get_current_win()
-    vim.cmd('NvimTreeToggle')
-    vim.api.nvim_set_current_win(current_window_id)
+	local current_window_id = vim.api.nvim_get_current_win()
+	vim.cmd('NvimTreeToggle')
+	vim.api.nvim_set_current_win(current_window_id)
 end
 
 
 vim.keymap.set("n", "<leader>e", function()
-    local current_win = vim.api.nvim_get_current_win()
-    if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
-        vim.cmd("wincmd p") -- Switch to previous window
-    else
-        vim.cmd("NvimTreeFocus")
-    end
+	local current_win = vim.api.nvim_get_current_win()
+	if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
+		vim.cmd("wincmd p") -- Switch to previous window
+	else
+		vim.cmd("NvimTreeFocus")
+	end
 end, { silent = true })
 
 vim.keymap.set(
-    "n",
-    "<C-o>",
-    toggle_nvim_tree_without_focus, { noremap = true, silent = true }
+	"n",
+	"<C-n>",
+	toggle_nvim_tree_without_focus, { noremap = true, silent = true }
 --   ":NvimTreeToggle<CR>", { noremap = true, silent = true }
 )
 
@@ -76,30 +77,26 @@ vim.keymap.set("v", "<BS>", "<gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
 vim.keymap.set("n", "<BS>", "<<", { noremap = true, silent = true })
 
-
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 local terminal_buf_id = nil
 
 local function toggle_term()
-    if vim.bo.buftype == "terminal" then
-        vim.cmd("q")
-        return
-    end
-    if terminal_buf_id and vim.api.nvim_buf_is_valid(terminal_buf_id) then
-        vim.cmd("belowright split | b" .. terminal_buf_id)
-    else
-        vim.cmd("belowright split | terminal")
-        terminal_buf_id = vim.api.nvim_get_current_buf()
-    end
+	if vim.bo.buftype == "terminal" then
+		vim.cmd("q")
+		return
+	end
+	if terminal_buf_id and vim.api.nvim_buf_is_valid(terminal_buf_id) then
+		vim.cmd("belowright split | b" .. terminal_buf_id)
+	else
+		vim.cmd("belowright split | terminal")
+		terminal_buf_id = vim.api.nvim_get_current_buf()
+	end
 end
 
 vim.keymap.set("n", "<leader>t", toggle_term);
--- vim.keymap.set("n", "<leader>t", ":belowright split | terminal<CR>");
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
 
-
-vim.keymap.set("n", "<C-b>", ":Telescope lsp_references<CR>");
