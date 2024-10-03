@@ -81,22 +81,55 @@ vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
 
-local terminal_buf_id = nil
+
+local function get_terminal_buffers()
+    local term_bufs = {}
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_option(buf, 'buftype') == 'terminal' then
+            table.insert(term_bufs, buf)
+        end
+    end
+    return term_bufs
+end
 
 local function toggle_term()
+
+	local term_buffers = get_terminal_buffers()
+
+    if  vim.bo.buftype == "terminal" then
+        for _, buf_id in ipairs(term_buffers) do
+            if vim.api.nvim_buf_is_valid(buf_id) then
+                vim.cmd("b" .. buf_id)
+                vim.cmd("hide")
+            end
+       end
+    else
+        -- open all terminal buffers
+		for i, buf_id in ipairs(term_buffers) do
+            if vim.api.nvim_buf_is_valid(buf_id) then
+                if i == 1 then
+                    vim.cmd("belowright split | b" .. buf_id)  -- first one horizontaly 
+                else
+                    vim.cmd("vsplit | b" .. buf_id)  -- vertically for subsequent terminals
+				end
+			end
+        end
+        -- new terminal buffer if none exist
+        if #term_buffers == 0 then
+			vim.cmd("belowright split | terminal")
+        end
+    end
+end
+
+local function split_term()
 	if vim.bo.buftype == "terminal" then
-		vim.cmd("q")
+		vim.cmd("vsp | term")
 		return
-	end
-	if terminal_buf_id and vim.api.nvim_buf_is_valid(terminal_buf_id) then
-		vim.cmd("belowright split | b" .. terminal_buf_id)
-	else
-		vim.cmd("belowright split | terminal")
-		terminal_buf_id = vim.api.nvim_get_current_buf()
 	end
 end
 
+vim.keymap.set("n", "<C-t>", split_term);
 vim.keymap.set("n", "<leader>t", toggle_term);
 
+vim.keymap.set("n", "<C-1>", toggle_term);
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
-
