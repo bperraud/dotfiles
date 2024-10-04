@@ -85,7 +85,7 @@ end)
 local function get_terminal_buffers()
     local term_bufs = {}
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_option(buf, 'buftype') == 'terminal' then
+        if vim.api.nvim_buf_get_option(buf, 'buftype') == 'terminal' then
             table.insert(term_bufs, buf)
         end
     end
@@ -93,15 +93,11 @@ local function get_terminal_buffers()
 end
 
 local function toggle_term()
-
 	local term_buffers = get_terminal_buffers()
-
     if  vim.bo.buftype == "terminal" then
         for _, buf_id in ipairs(term_buffers) do
-            if vim.api.nvim_buf_is_valid(buf_id) then
-                vim.cmd("b" .. buf_id)
-                vim.cmd("hide")
-            end
+			vim.cmd("b" .. buf_id)
+			vim.cmd("hide")
        end
     else
         -- open all terminal buffers
