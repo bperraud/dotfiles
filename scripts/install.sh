@@ -1,4 +1,6 @@
 sudo apt update
+sudo apt install neovim
+sudo apt install neofetch
 sudo apt install python3-venv
 sudo apt install npm
 sudo apt install unzip
@@ -11,4 +13,3 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # packer vim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
