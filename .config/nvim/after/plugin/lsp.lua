@@ -1,13 +1,4 @@
 
---require('mason-lspconfig').setup({ ensure_installed = {},handlers = {lsp.default_setup,},})
-
-
---[[
-require("lspconfig")["black"].setup({
-    on_attach = on_attach, 
-    capabilities = capabilities,
-})
---]]
 
 local lsp = require("lsp-zero")
 
@@ -15,7 +6,6 @@ lsp.preset("recommended")
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
-
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
@@ -38,11 +28,18 @@ end)
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
-  "lua_ls",
-  'pyright',
-  'clangd'
-})
+-- lsp.ensure_installed({
+--   'lua_ls',
+--   'pyright',
+--   'clangd',
+--   'eslint',
+--   'html'
+-- })
+--
+--
+
+-- require('lspconfig').ts_ls.setup({})
+-- require('lspconfig').html.setup({})
 
 lsp.configure("lua_ls", {
     settings = {
@@ -54,37 +51,17 @@ lsp.configure("lua_ls", {
     }
 })
 
+lsp.configure("eslint", {
+  on_init = function(client)
+    client.config.settings.workingDirectory = { directory = client.config.root_dir }
+  end,
+})
+
 require('lspconfig').templ.setup({
     cmd = { "templ", "lsp", "-http=localhost:7474", "-log=/home/mpaulson/templ.log" },
     filetypes = { 'templ' },
 })
 
---[[
--- Add templ configuration.
-local configs = require'lspconfig/configs'
-if not nvim_lsp.templ then
-  configs.templ = {
-    default_config = {
-      cmd = {"templ", "lsp"},
-      filetypes = {'templ'},
-      root_dir = nvim_lsp.util.root_pattern("go.mod", ".git"),
-      settings = {},
-    };
-  }
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'ccls', 'cmake', 'tsserver', 'templ' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-end
---]]
 
 local cmp = require("cmp")
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

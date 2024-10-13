@@ -103,3 +103,5 @@ source $ZSH/oh-my-zsh.sh
 alias commit="git add --all && git commit -m"
 alias vim=nvim
 neofetch
+alias chrome="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+

@@ -1,4 +1,3 @@
--- Define the Mason configuration
 local mason = require("mason-null-ls")
 
 mason.setup({
@@ -6,8 +5,10 @@ mason.setup({
         "black",
         "debugpy",
         "mypy",
-        "ruff-lsp",
-        "pyright"
+        "pyright",
+        "html",
+        "ts_ls",
+        "html"
     }
 })
 
