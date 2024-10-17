@@ -20,20 +20,3 @@ null_ls.setup({
 		end
 	end,
 })
-
---[[
--- Configure null-ls as a diagnostic source
-nvim_lsp.diagnosticls.setup({
-  on_attach = function(client, bufnr)
-    -- Your on_attach function (if any)
-  end,
-  filetypes = {"python"},
-  init_options = {
-    linters = {},
-    formatFiletypes = {
-      python = "black",
-    },
-  },
-})
-
---]]
