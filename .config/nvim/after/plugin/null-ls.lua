@@ -1,36 +1,24 @@
 
-
---[[
-local null_ls = require('null-ls')
-local opts = {
-    source = {
-        null_ls.builtins.diagnostics.mypy,
-        null_ls.builtins.diagnostics.ruff,
-    }
-}
-return opts
---]]
---
---
---[[
-local null_ls = require('null-ls')
-
-null_ls.setup {
-  sources = {
-    null_ls.builtins.formatting.ruff,
-    null_ls.builtins.diagnostics.ruff,
-  }
-}
---]]
-
 local null_ls = require("null-ls")
 
 null_ls.setup({
     sources = {
         null_ls.builtins.formatting.black,
         null_ls.builtins.diagnostics.mypy
-        -- null_ls.builtins.diagnostics.ruff,
     },
+
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            -- Create an autocmd that formats the buffer on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
 })
 
 --[[
