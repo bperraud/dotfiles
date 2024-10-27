@@ -119,7 +119,7 @@ end
 
 local function split_term()
 	if vim.bo.buftype == "terminal" then
-		vim.cmd("vsp | term")
+		vim.cmd("vsp | wincmd l | term")
 		return
 	end
 end
