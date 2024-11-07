@@ -42,6 +42,7 @@ require("nvim-tree").setup({
     api.config.mappings.default_on_attach(bufnr)
     -- Add your custom keymap for renaming
     vim.keymap.set("n", "i", api.fs.rename, { buffer = bufnr, noremap = true, silent = true })
+    vim.keymap.set("n", "o", api.fs.create, { buffer = bufnr, noremap = true, silent = true })
   end,
 })
 

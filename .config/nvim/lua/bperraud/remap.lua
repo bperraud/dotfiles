@@ -89,15 +89,17 @@ local function get_terminal_buffers()
             table.insert(term_bufs, buf)
         end
     end
+    table.sort(term_bufs, function(a, b)
+        return a > b  -- sort buffers by IDs 
+    end)
     return term_bufs
 end
 
 local function toggle_term()
 	local term_buffers = get_terminal_buffers()
-    if  vim.bo.buftype == "terminal" then
+    if vim.bo.buftype == "terminal" or (#term_buffers ~= 0 and vim.fn.bufwinnr(term_buffers[1]) > 0) then
         for _, buf_id in ipairs(term_buffers) do
-			vim.cmd("b" .. buf_id)
-			vim.cmd("hide")
+            vim.api.nvim_win_hide(vim.fn.bufwinid(buf_id))
        end
     else
         -- open all terminal buffers
