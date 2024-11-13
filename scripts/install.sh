@@ -7,6 +7,7 @@ sudo apt install unzip
 sudo apt install stow
 sudo apt install tmux
 sudo apt install fzf
+sudo apt install ripgrep
 # zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 

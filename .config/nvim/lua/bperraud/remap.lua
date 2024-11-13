@@ -19,20 +19,17 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- grep in all files
+vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+
+-- format code
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/tmux-sessionizer.sh<CR>")
-
---vim.keymap.set("n", "<C-f>", "<cmd>silent !~/dotfiles/tmux-sessionizer<CR>")
-
--- format code
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-s>", function()
-	vim.cmd("w")
+    vim.cmd("w")
 end, { noremap = true })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -52,25 +49,25 @@ vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
 -- )
 
 local function toggle_nvim_tree_without_focus()
-	local current_window_id = vim.api.nvim_get_current_win()
-	vim.cmd('NvimTreeToggle')
-	vim.api.nvim_set_current_win(current_window_id)
+    local current_window_id = vim.api.nvim_get_current_win()
+    vim.cmd('NvimTreeToggle')
+    vim.api.nvim_set_current_win(current_window_id)
 end
 
 
 vim.keymap.set("n", "<leader>e", function()
-	local current_win = vim.api.nvim_get_current_win()
-	if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
-		vim.cmd("wincmd p") -- Switch to previous window
-	else
-		vim.cmd("NvimTreeFocus")
-	end
+    local current_win = vim.api.nvim_get_current_win()
+    if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
+        vim.cmd("wincmd p") -- Switch to previous window
+    else
+        vim.cmd("NvimTreeFocus")
+    end
 end, { silent = true })
 
 vim.keymap.set(
-	"n",
-	"<C-n>",
-	toggle_nvim_tree_without_focus, { noremap = true, silent = true }
+    "n",
+    "<C-n>",
+    toggle_nvim_tree_without_focus, { noremap = true, silent = true }
 --   ":NvimTreeToggle<CR>", { noremap = true, silent = true }
 )
 
@@ -80,7 +77,7 @@ vim.keymap.set("n", "<Tab>", ">>", { noremap = true, silent = true })
 vim.keymap.set("n", "<BS>", "<<", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
+    vim.cmd("so")
 end)
 
 
@@ -92,40 +89,40 @@ local function get_terminal_buffers()
         end
     end
     table.sort(term_bufs, function(a, b)
-        return a > b  -- sort buffers by IDs 
+        return a > b -- sort buffers by IDs
     end)
     return term_bufs
 end
 
 local function toggle_term()
-	local term_buffers = get_terminal_buffers()
+    local term_buffers = get_terminal_buffers()
     if vim.bo.buftype == "terminal" or (#term_buffers ~= 0 and vim.fn.bufwinnr(term_buffers[1]) > 0) then
         for _, buf_id in ipairs(term_buffers) do
             vim.api.nvim_win_hide(vim.fn.bufwinid(buf_id))
-       end
+        end
     else
         -- open all terminal buffers
-		for i, buf_id in ipairs(term_buffers) do
+        for i, buf_id in ipairs(term_buffers) do
             if vim.api.nvim_buf_is_valid(buf_id) then
                 if i == 1 then
-                    vim.cmd("belowright split | b" .. buf_id)  -- first one horizontaly 
+                    vim.cmd("belowright split | b" .. buf_id) -- first one horizontaly
                 else
-                    vim.cmd("vsplit | b" .. buf_id)  -- vertically for subsequent terminals
-				end
-			end
+                    vim.cmd("vsplit | b" .. buf_id)           -- vertically for subsequent terminals
+                end
+            end
         end
         -- new terminal buffer if none exist
         if #term_buffers == 0 then
-			vim.cmd("belowright split | terminal")
+            vim.cmd("belowright split | terminal")
         end
     end
 end
 
 local function split_term()
-	if vim.bo.buftype == "terminal" then
-		vim.cmd("vsp | wincmd l | term")
-		return
-	end
+    if vim.bo.buftype == "terminal" then
+        vim.cmd("vsp | wincmd l | term")
+        return
+    end
 end
 
 vim.keymap.set("n", "<C-t>", split_term);
