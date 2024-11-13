@@ -7,22 +7,11 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-
+  -- telescope
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
-	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
-  -- theme
-
-  --use({
-	  --'rose-pine/neovim',
-	  --as = 'rose-pine',
-	  --config = function()
-		 --vim.cmd('colorscheme rose-pine')
-	  --end
-  --}
 
   use {
   'nvim-tree/nvim-tree.lua',
@@ -31,9 +20,6 @@ return require('packer').startup(function(use)
   },
 }
 
-  -- use { "catppuccin/nvim", as = "catppuccin" }
-
-  use('Mofiqul/vscode.nvim')
 
   -- comment
   use('tpope/vim-commentary')
@@ -75,5 +61,17 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  -- colorscheme
+  use('Mofiqul/vscode.nvim')
+
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  -- theme
+--use({
+	  --'rose-pine/neovim',
+	  --as = 'rose-pine',
+	  --config = function()
+		 --vim.cmd('colorscheme rose-pine')
+	  --end
+  --}
 
 end)

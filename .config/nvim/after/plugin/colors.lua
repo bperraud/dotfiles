@@ -12,5 +12,10 @@
 --
 --
 
-vim.cmd.colorscheme "vscode"
+require('vscode').setup({
+    -- transparent = true,
+    disable_nvimtree_bg = true,
+})
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = '#282828' })
 
+vim.cmd.colorscheme "vscode"
