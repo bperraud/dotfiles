@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
 	  --config = function()
 		 --vim.cmd('colorscheme rose-pine')
 	  --end
-  --})
+  --}
 
   use {
   'nvim-tree/nvim-tree.lua',
@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
 		  {"hrsh7th/nvim-cmp"},
 		  {"hrsh7th/cmp-buffer"},
 		  {"hrsh7th/cmp-path"},
+		  {"hrsh7th/cmp-cmdline"},
 		  {"saadparwaiz1/cmp_luasnip"},
 		  {"hrsh7th/cmp-nvim-lsp"},
 		  {"hrsh7th/cmp-nvim-lua"},
