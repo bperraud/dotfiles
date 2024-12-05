@@ -8,7 +8,8 @@ mason.setup({
         "pyright",
         "html",
         "ts_ls",
-        "html"
+        "html",
+        "gopls"
     }
 })
 

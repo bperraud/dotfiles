@@ -1,10 +1,9 @@
 -- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
-vim.opt.termguicolors = true
-
+-- vim.opt.termguicolors = true
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -33,7 +32,6 @@ require('nvim-web-devicons').setup {
 	default = true;  -- Ensures that default icons are used
 }
 
-
 --keymap
 require("nvim-tree").setup({
   on_attach = function(bufnr)
@@ -46,5 +44,3 @@ require("nvim-tree").setup({
   end,
 })
 
--- -- empty setup using defaults
--- require("nvim-tree").setup()

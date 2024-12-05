@@ -1,7 +1,3 @@
-require("bperraud.packer")
-require("bperraud.remap")
-require("bperraud.set")
-
 vim.cmd([[
   augroup DisableWriteWarnings
     autocmd!
@@ -26,3 +22,8 @@ vim.api.nvim_create_autocmd("FocusGained", {
         end
     end,
 })
+
+
+require("bperraud.packer")
+require("bperraud.remap")
+require("bperraud.set")

@@ -102,5 +102,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias commit="git add --all && git commit -m"
 neofetch
-alias chrome="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
 
+chrome() {
+    local windows_path
+    windows_path=$(wslpath -w "$1")  # Convert WSL path to Windows path
+    "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$windows_path"
+}
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/nvim/bin
