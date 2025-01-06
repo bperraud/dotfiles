@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias commit="git add --all && git commit -m"
+alias bat="batcat"
 neofetch
 
 chrome() {
@@ -111,3 +112,5 @@ chrome() {
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/nvim/bin
+
+
