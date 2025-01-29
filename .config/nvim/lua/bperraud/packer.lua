@@ -13,6 +13,11 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  --- vim Helm detection 
+  use {
+      'towolf/vim-helm'
+  }
+
   use {
       'nvim-tree/nvim-tree.lua',
       requires = {
