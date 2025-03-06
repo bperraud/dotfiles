@@ -1,13 +1,6 @@
 sudo apt update
-sudo apt install neovim
-sudo apt install neofetch
-sudo apt install python3-venv
-sudo apt install npm
-sudo apt install unzip
-sudo apt install stow
-sudo apt install tmux
-sudo apt install fzf
-sudo apt install ripgrep
+sudo apt install curl neovim neofetch python3-venv npm unzip stow tmux fzf ripgrep
+
 # zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
