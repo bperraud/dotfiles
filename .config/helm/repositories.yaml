@@ -10,3 +10,39 @@ repositories:
   password: ""
   url: https://download.passbolt.com/charts/passbolt
   username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: passbolt
+  pass_credentials_all: false
+  password: ""
+  url: https://download.passbolt.com/charts/passbolt
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: gabe565
+  pass_credentials_all: false
+  password: ""
+  url: https://charts.gabe565.com
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: collabora
+  pass_credentials_all: false
+  password: ""
+  url: https://collaboraonline.github.io/online/
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: haproxytech
+  pass_credentials_all: false
+  password: ""
+  url: https://haproxytech.github.io/helm-charts
+  username: ""

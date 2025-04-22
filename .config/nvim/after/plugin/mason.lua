@@ -9,7 +9,8 @@ mason.setup({
         "html",
         "ts_ls",
         "html",
-        "gopls"
+        "gopls",
+        "vue-language-server"
     }
 })
 
