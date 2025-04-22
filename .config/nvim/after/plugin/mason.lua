@@ -11,7 +11,8 @@ mason.setup({
         "html",
         "gopls",
         "vue-language-server",
-        "helm_ls"
+        "helm_ls",
+        "django-template-lsp"
     }
 })
 

@@ -1,4 +1,6 @@
 .config/go/
+.config/helm/
 
-helm/
 pulse/
+.mypy_cache/
+
