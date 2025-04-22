@@ -115,3 +115,4 @@ export PATH=$PATH:/usr/local/oc
 export PATH=$PATH:/usr/local/nvim/bin
 
 
+eval "$(direnv hook zsh)"
