@@ -1,4 +1,3 @@
-
 local null_ls = require("null-ls")
 
 null_ls.setup({
@@ -20,3 +19,12 @@ null_ls.setup({
 		end
 	end,
 })
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.mypy.with({
+            extra_args = { "--ignore-missing-imports" },  -- Disable import errors
+        }),
+    },
+})
+

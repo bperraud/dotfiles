@@ -16,3 +16,7 @@ mason.setup({
     }
 })
 
+require("lspconfig").pyright.setup({
+  root_dir = require("lspconfig.util").root_pattern("pyrightconfig.json", ".git")
+})
+
