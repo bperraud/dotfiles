@@ -8,7 +8,6 @@ mason.setup({
         "pyright",
         "html",
         "ts_ls",
-        "html",
         "gopls",
         "vue-language-server",
         "helm_ls",

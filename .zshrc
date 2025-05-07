@@ -72,6 +72,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,3 +117,4 @@ export PATH=$PATH:/usr/local/nvim/bin
 
 
 eval "$(direnv hook zsh)"
+
