@@ -56,29 +56,22 @@ return require('packer').startup(function(use)
   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
 
-  use {
-	  "VonHeikemen/lsp-zero.nvim",
-	  branch = "v1.x",
-	  requires = {
-		  -- LSP Support
-		  {"neovim/nvim-lspconfig"},
-		  {"williamboman/mason.nvim"},
-		  {"williamboman/mason-lspconfig.nvim"},
+      -- LSP and tools
+    use 'neovim/nvim-lspconfig'
+    use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
+    use 'williamboman/mason-lspconfig.nvim'
 
-		  -- Autocompletion
-		  {"hrsh7th/nvim-cmp"},
-		  {"hrsh7th/cmp-buffer"},
-		  {"hrsh7th/cmp-path"},
-		  {"hrsh7th/cmp-cmdline"},
-		  {"saadparwaiz1/cmp_luasnip"},
-		  {"hrsh7th/cmp-nvim-lsp"},
-		  {"hrsh7th/cmp-nvim-lua"},
+    -- Completion engine
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'saadparwaiz1/cmp_luasnip'
 
-		  -- Snippets
-		  {"L3MON4D3/LuaSnip"},
-		  {"rafamadriz/friendly-snippets"},
-	  }
-  }
+    -- Snippets
+    use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets' -- optional
 
 
 end)

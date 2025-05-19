@@ -23,7 +23,7 @@ null_ls.setup({
 null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.mypy.with({
-            extra_args = { "--ignore-missing-imports" },  -- Disable import errors
+            extra_args = { "--ignore-missing-imports" },  -- Disable mypy import errors
         }),
     },
 })
