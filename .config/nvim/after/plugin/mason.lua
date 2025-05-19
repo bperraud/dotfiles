@@ -56,6 +56,7 @@ lspconfig.clangd.setup({
 lspconfig.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { "html", "htmldjango" },
 })
 
 -- Configure django-lsp
