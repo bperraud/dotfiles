@@ -60,13 +60,14 @@ lspconfig.html.setup({
 })
 
 -- Configure django-lsp
-lspconfig.djlsp.setup{
+lspconfig.djlsp.setup({
+    filetypes = { "htmldjango"},
     cmd = { vim.fn.stdpath("data") .. "/mason/bin/djlsp" },
     init_options = {
-        django_settings_module = "your_project.settings",
+        -- django_settings_module = "your_project.settings",
         docker_compose_file = "docker-compose.yaml",
         docker_compose_service = "django"
     },
     on_attach = on_attach,
     capabilities = capabilities
-}
+})

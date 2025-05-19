@@ -69,9 +69,16 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-cmdline'
     use 'saadparwaiz1/cmp_luasnip'
 
-    -- Snippets
-    use 'L3MON4D3/LuaSnip'
-    use 'rafamadriz/friendly-snippets' -- optional
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v2.4.0",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })    
+
+    use 'rafamadriz/friendly-snippets'          -- Collection of snippets
+
+    use 'saadparwaiz1/cmp_luasnip'              -- nvim-cmp + LuaSnip integration
 
 
 end)
