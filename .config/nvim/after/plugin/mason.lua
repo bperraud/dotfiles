@@ -29,6 +29,16 @@ mason.setup({
     }
 })
 
+lspconfig.helm_ls.setup {
+  settings = {
+    ['helm-ls'] = {
+      yamlls = {
+        path = "yaml-language-server",
+      }
+    }
+  }
+}
+
 -- Attach capabilities for autocompletion (optional but recommended)
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -71,3 +81,19 @@ lspconfig.djlsp.setup({
     on_attach = on_attach,
     capabilities = capabilities
 })
+
+
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 2,
+  },
+  signs = true,      -- enable signs in the gutter (where you see E, W, etc.)
+  underline = true,  -- underline problematic code
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    source = "always",   -- always show the source of the diagnostic (like pyright)
+    border = "rounded",
+  },
+})
+
