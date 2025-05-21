@@ -6,7 +6,7 @@ vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
 
 ls.filetype_extend("htmldjango", { "html" })
 
-require("luasnip.loaders.from_vscode").load({ include = { "html", "js", "python" } })
+require("luasnip.loaders.from_vscode").load({ include = { "html", "js", "python", "typescript", "go", "php", "django" } })
 
 ls.config.setup({
     enable_autosnippets = true,
