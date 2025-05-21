@@ -40,8 +40,6 @@ return require('packer').startup(function(use)
   ---- -- comment
   use('tpope/vim-commentary')
 
-
-
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   ----
@@ -52,30 +50,32 @@ return require('packer').startup(function(use)
   -- use("jay-babu/mason-null-ls.nvim")
 
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
-      -- LSP and tools
-    use 'neovim/nvim-lspconfig'
-    use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
-    use 'williamboman/mason-lspconfig.nvim'
+  use 'rafamadriz/friendly-snippets'          -- Collection of snippets
+  use 'mattn/emmet-vim'
 
-    -- Completion engine
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'saadparwaiz1/cmp_luasnip'
+  -- LSP and tools
+  use 'neovim/nvim-lspconfig'
+  use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
+  use 'williamboman/mason-lspconfig.nvim'
 
-    use({
-        "L3MON4D3/LuaSnip",
-        tag = "v2.4.0",
-        -- install jsregexp (optional!:).
-        run = "make install_jsregexp"
-    })    
+  -- Completion engine
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'saadparwaiz1/cmp_luasnip'
 
-    use 'rafamadriz/friendly-snippets'          -- Collection of snippets
+  use({
+      "L3MON4D3/LuaSnip",
+      tag = "v2.4.0",
+      -- install jsregexp (optional!:).
+      run = "make install_jsregexp"
+  })    
+
 
 end)

@@ -2,7 +2,6 @@
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
-local mason_null_ls = require("mason-null-ls")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
@@ -50,19 +49,16 @@ lspconfig.pyright.setup({
 
 })
 
--- Configure tsserver (TypeScript)
 lspconfig.ts_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
--- Configure clangd (C/C++)
 lspconfig.clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
--- Configure html
 lspconfig.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -87,7 +83,7 @@ vim.diagnostic.config({
   virtual_text = {
     spacing = 2,
   },
-  signs = true,      -- enable signs in the gutter (where you see E, W, etc.)
+  signs = true,
   underline = true,  -- underline problematic code
   update_in_insert = false,
   severity_sort = true,
