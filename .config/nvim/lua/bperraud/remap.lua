@@ -23,11 +23,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
 -- format code
+vim.g.user_emmet_expandabbr_key = '<C-y>'
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
-
--- emmet-ls snippet
-vim.g.user_emmet_leader_key = '<C-i>'
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
@@ -132,5 +129,4 @@ end
 vim.keymap.set("n", "<C-t>", split_term);
 vim.keymap.set("n", "<leader>t", toggle_term);
 
--- vim.keymap.set("n", "<C-1>", toggle_term);
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
