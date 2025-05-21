@@ -48,8 +48,8 @@ return require('packer').startup(function(use)
   ---- use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
-  use("jose-elias-alvarez/null-ls.nvim")
-  use("jay-babu/mason-null-ls.nvim")
+  -- use("jose-elias-alvarez/null-ls.nvim")
+  -- use("jay-babu/mason-null-ls.nvim")
 
   use {
   'nvim-lualine/lualine.nvim',
@@ -77,8 +77,5 @@ return require('packer').startup(function(use)
     })    
 
     use 'rafamadriz/friendly-snippets'          -- Collection of snippets
-
-    use 'saadparwaiz1/cmp_luasnip'              -- nvim-cmp + LuaSnip integration
-
 
 end)
