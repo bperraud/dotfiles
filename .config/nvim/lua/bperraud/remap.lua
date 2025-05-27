@@ -7,16 +7,19 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 vim.keymap.set('v', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- grep in all files
@@ -26,7 +29,6 @@ vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>', { noremap = true, s
 vim.g.user_emmet_expandabbr_key = '<C-y>'
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
 
 vim.keymap.set("n", "<C-s>", function()
