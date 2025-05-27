@@ -102,6 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias commit="git add --all && git commit -m"
+alias gp="git push"
+alias gs="git show"
+alias gd="git diff"
 alias bat="batcat"
 neofetch
 
