@@ -74,5 +74,10 @@ return require('packer').startup(function(use)
       run = "make install_jsregexp"
   })    
 
+  -- Debugger
+  use { 'mfussenegger/nvim-dap' }
+  use { "jay-babu/mason-nvim-dap.nvim" }
+  use { "rcarriga/nvim-dap-ui" }
+  use { "nvim-neotest/nvim-nio" }
 
 end)
