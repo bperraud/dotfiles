@@ -53,12 +53,25 @@ lspconfig.pyright.setup({
 
 })
 
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }, -- ✅ Tell LSP that 'vim' is a global
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true), -- ✅ Make LSP aware of Neovim runtime
+        checkThirdParty = false,
+      },
+      telemetry = { enable = false },
+    }
+  }
+})
 
 local servers = {
     "ts_ls",
     "gopls",
     "helm_ls",
-    "lua_ls",
     "clangd",
     -- "vls",
     -- "volar",
