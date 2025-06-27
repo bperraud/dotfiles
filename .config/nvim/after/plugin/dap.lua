@@ -11,6 +11,13 @@ require("mason-nvim-dap").setup({
 local dap = require('dap')
 require('dapui').setup()
 
+vim.fn.sign_define('DapBreakpoint', {
+  text = '●',
+  texthl = 'DiagnosticSignError',
+  linehl = '',
+  numhl = ''
+})
+
 dap.configurations.cpp = {
     {
         name = "Launch file",
@@ -35,6 +42,25 @@ dap.configurations.cpp = {
         end,
     },
 }
+
+dap.configurations.python = {
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Launch file',
+    program = '${file}', -- run current file
+    pythonPath = function()
+      -- Use system Python or override for venvs
+      return '/usr/bin/python3'
+    end,
+  },
+}
+
+-- dap.adapters.python = {
+--   type = 'executable',
+--   command = vim.fn.stdpath("data") .. '/mason/packages/debugpy/venv/bin/python',
+--   args = { '-m', 'debugpy.adapter' },
+-- }
 
 -- Global DAP keymaps
 local dapui = require('dapui')

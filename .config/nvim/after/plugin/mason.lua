@@ -23,6 +23,7 @@ mason.setup({
         "ts_ls",
         "gopls",
         "vls",
+        "json-lsp",
         -- "volar",
         "helm_ls",
         "django-template-lsp",
@@ -94,7 +95,6 @@ end
 --   on_attach = on_attach,
 --   capabilities = capabilities,
 -- })
-
 
 lspconfig.html.setup({
   on_attach = on_attach,
