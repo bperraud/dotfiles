@@ -18,29 +18,39 @@ vim.fn.sign_define('DapBreakpoint', {
   numhl = ''
 })
 
-dap.configurations.cpp = {
+dap.adapters.codelldb = {
+ type = "server",
+ port = "${port}",
+ executable = {
+  command = "codelldb",
+  args = { "--port", "${port}" },
+ },
+}
+
+dap.configurations.c = {
     {
         name = "Launch file",
-        type = "cppdbg",
+        type = "codelldb",
         request = "launch",
         program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
         stopAtEntry = true,
-    },
+    }
+}
+
+dap.configurations.cpp = {
     {
-        name = 'Attach to gdbserver :1234',
-        type = 'cppdbg',
-        request = 'launch',
-        MIMode = 'gdb',
-        miDebuggerServerAddress = 'localhost:1234',
-        miDebuggerPath = '/usr/bin/gdb',
-        cwd = '${workspaceFolder}',
+        name = "Launch file",
+        type = "codelldb",
+        request = "launch",
         program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
-    },
+        cwd = '${workspaceFolder}',
+        stopAtEntry = true,
+    }
 }
 
 dap.configurations.python = {

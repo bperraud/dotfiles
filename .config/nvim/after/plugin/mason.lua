@@ -24,6 +24,7 @@ mason.setup({
         "gopls",
         "vls",
         "json-lsp",
+        "codelldb",
         -- "volar",
         "helm_ls",
         "django-template-lsp",
