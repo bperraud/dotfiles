@@ -4,80 +4,92 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  ---- telescope
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  --- vim Helm detection 
-  use {
-      'towolf/vim-helm'
-  }
-
-  use {
-      'nvim-tree/nvim-tree.lua',
-      requires = {
-        'nvim-tree/nvim-web-devicons', -- optional
-      },
+    ---- telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.6',
+        requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-  ---- colorscheme
-  use('Mofiqul/vscode.nvim')
-  ---- use { "catppuccin/nvim", as = "catppuccin" }
-  ---- theme
-----use({
-	  ----'rose-pine/neovim',
-	  ----as = 'rose-pine',
-	  ----config = function()
-		 ----vim.cmd('colorscheme rose-pine')
-	  ----end
-  ----}
+    --- vim Helm detection 
+    use {
+        'towolf/vim-helm'
+    }
 
-  ---- -- comment
-  use('tpope/vim-commentary')
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+    }
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
+    ---- colorscheme
+    use('Mofiqul/vscode.nvim')
+    ---- use { "catppuccin/nvim", as = "catppuccin" }
+    ---- theme
+    ----use({
+    ----'rose-pine/neovim',
+    ----as = 'rose-pine',
+    ----config = function()
+    ----vim.cmd('colorscheme rose-pine')
+    ----end
+    ----}
 
-  use('mbbill/undotree')
-  use('tpope/vim-fugitive')
+    ---- -- comment
+    use('tpope/vim-commentary')
 
-  use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/playground')
 
-  use 'rafamadriz/friendly-snippets'          -- Collection of snippets
-  use 'mattn/emmet-vim'
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
 
-  -- LSP and tools
-  use 'neovim/nvim-lspconfig'
-  use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
-  use 'williamboman/mason-lspconfig.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
-  -- Completion engine
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'saadparwaiz1/cmp_luasnip'
+    use 'rafamadriz/friendly-snippets'          -- Collection of snippets
+    use 'mattn/emmet-vim'
 
-  use({
-      "L3MON4D3/LuaSnip",
-      tag = "v2.4.0",
-      -- install jsregexp (optional!:).
-      run = "make install_jsregexp"
-  })    
+    -- LSP and tools
+    use 'neovim/nvim-lspconfig'
+    use { 'williamboman/mason.nvim', run = ":MasonUpdate" }
+    use 'williamboman/mason-lspconfig.nvim'
 
-  -- Debugger
-  use { 'mfussenegger/nvim-dap' }
-  use { "jay-babu/mason-nvim-dap.nvim" }
-  use { "rcarriga/nvim-dap-ui" }
-  use { "nvim-neotest/nvim-nio" }
+    -- Completion engine
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'saadparwaiz1/cmp_luasnip'
+
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v2.4.0",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })    
+
+    -- Debugger
+    use { 'mfussenegger/nvim-dap' }
+    use { "jay-babu/mason-nvim-dap.nvim" }
+    use { "rcarriga/nvim-dap-ui" }
+    use { "nvim-neotest/nvim-nio" }
+
+    -- Markdown
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+        -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+        -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    })
 
 end)
