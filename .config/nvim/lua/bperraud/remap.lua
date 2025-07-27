@@ -31,6 +31,9 @@ vim.g.user_emmet_expandabbr_key = '<C-y>'
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
 
+-- normal mode inside terminal
+vim.keymap.set('t', '<C-e>', '<Esc>', { noremap = true })
+
 vim.keymap.set("n", "<C-s>", function()
     vim.cmd("w")
 end, { noremap = true })
