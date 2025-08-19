@@ -106,6 +106,12 @@ alias gp="git push"
 alias gs="git show"
 alias gd="git diff"
 alias bat="batcat"
+alias vault_prd="export VAULT_ADDR='https://vault.core.h6n.ulb.ac.be' && vault login -method=oidc -path=azure -address=$VAULT_ADDR && vault write -field=signed_key hyperion/ssh-client-signer/sign/sysadmin public_key=@$HOME/.ssh/id_ed25519.pub > ~/.ssh/id_ed25519-cert.pub"
+alias vault_lab="export VAULT_ADDR='https://vault.core.dev.hpda.ulb.ac.be/' && vault login -method=oidc -path=azure -address=$VAULT_ADDR && vault write -field=signed_key hyperion/ssh-client-signer/sign/sysadmin public_key=@$HOME/.ssh/id_ed25519.pub > ~/.ssh/id_ed25519-cert.pub"
+
+alias ogp="oc get pods"
+alias kgp="kubectl get pods"
+
 neofetch
 
 chrome() {
