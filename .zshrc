@@ -124,11 +124,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/oc
 export PATH=$PATH:/usr/local/nvim/bin
 
-export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
-export BAT_THEME="gruvbox-dark"
-
 eval "$(direnv hook zsh)"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

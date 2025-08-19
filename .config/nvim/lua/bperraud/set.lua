@@ -32,6 +32,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
   command = "checktime"
 })
 
+-- Man page
+vim.g.man_hardwrap = 0
+vim.cmd [[autocmd FileType man wincmd L]]
+
 vim.cmd([[
   augroup DisableWriteWarnings
     autocmd!

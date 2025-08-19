@@ -22,8 +22,6 @@ vim.keymap.set({ "n", "v" }, "<C-c>", [["+y]])
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- grep in all files
-vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
 
