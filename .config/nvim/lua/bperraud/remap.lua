@@ -25,10 +25,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- grep in all files
 vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
--- format code
-vim.g.user_emmet_expandabbr_key = '<C-y>'
--- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/dotfiles/scripts/tmux-windownizer.sh<CR>")
 
 -- normal mode inside terminal
@@ -47,35 +43,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
-
--- vim.keymap.set(
---     "n",
---     "<leader>ee",
---     "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
--- )
-
-local function toggle_nvim_tree_without_focus()
-    local current_window_id = vim.api.nvim_get_current_win()
-    vim.cmd('NvimTreeToggle')
-    vim.api.nvim_set_current_win(current_window_id)
-end
-
-
-vim.keymap.set("n", "<leader>e", function()
-    local current_win = vim.api.nvim_get_current_win()
-    if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
-        vim.cmd("wincmd p") -- Switch to previous window
-    else
-        vim.cmd("NvimTreeFocus")
-    end
-end, { silent = true })
-
-vim.keymap.set(
-    "n",
-    "<C-n>",
-    toggle_nvim_tree_without_focus, { noremap = true, silent = true }
---   ":NvimTreeToggle<CR>", { noremap = true, silent = true }
-)
 
 vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<BS>", "<gv", { noremap = true, silent = true })
@@ -133,37 +100,4 @@ end
 
 vim.keymap.set("n", "<C-t>", split_term);
 vim.keymap.set("n", "<leader>t", toggle_term);
-
 vim.keymap.set("t", "<Esc>", "<C-\\><C-N>");
-
-
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
-vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-  require('dap.ui.widgets').hover()
-end)
-vim.keymap.set({'n', 'v'}, '<Leader>do', function()
-  require('dapui').open()
-end)
-vim.keymap.set({'n', 'v'}, '<Leader>dc', function()
-  require('dapui').close()
-end)
-vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-  require('dap.ui.widgets').preview()
-end)
-vim.keymap.set('n', '<Leader>df', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>ds', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.scopes)
-end)
-

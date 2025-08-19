@@ -8,3 +8,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd("EmmetInstall")
   end,
 })
+
+-- format code
+vim.g.user_emmet_expandabbr_key = '<C-y>'

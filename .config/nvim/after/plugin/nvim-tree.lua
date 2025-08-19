@@ -41,13 +41,24 @@ require('nvim-web-devicons').setup {
   default = true, -- Ensures that default icons are used
 }
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "python", "html", "javascript", "typescript", "json", "bash", "yaml", "c", "vim", "cpp", "dockerfile", "go", "helm", "htmldjango", "nginx", "php", "rust"},
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-}
+-- keymap
+vim.keymap.set("n", "<leader>e", function()
+    local current_win = vim.api.nvim_get_current_win()
+    if vim.fn.winnr('$') > 1 and vim.api.nvim_win_get_buf(current_win) == vim.fn.bufnr("NvimTree") then
+        vim.cmd("wincmd p") -- Switch to previous window
+    else
+        vim.cmd("NvimTreeFocus")
+    end
+end, { silent = true })
 
+local function toggle_nvim_tree_without_focus()
+    local current_window_id = vim.api.nvim_get_current_win()
+    vim.cmd('NvimTreeToggle')
+    vim.api.nvim_set_current_win(current_window_id)
+end
+
+vim.keymap.set(
+    "n",
+    "<C-n>",
+    toggle_nvim_tree_without_focus, { noremap = true, silent = true }
+)

@@ -1,3 +1,4 @@
+
 -- Setup devicons (optional)
 require('nvim-web-devicons').setup {
   default = true, -- Ensures that default icons are used
