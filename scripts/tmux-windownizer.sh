@@ -22,7 +22,7 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 fi
 
 # Create a new window in the current session
-tmux neww -n "$selected_name" -c "$selected"
+tmux neww -n "$selected_name" -c "$selected" "nvim ."
 
 new_window_index=$(tmux display-message -p '#I')
 
@@ -30,5 +30,3 @@ new_window_index=$(tmux display-message -p '#I')
 tmux select-window -t "$selected_name"
 
 tmux swap-window -s $((new_window_index - 1)) -t "$new_window_index"
-
-nvim $selected
