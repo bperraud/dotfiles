@@ -30,3 +30,5 @@ new_window_index=$(tmux display-message -p '#I')
 tmux select-window -t "$selected_name"
 
 tmux swap-window -s $((new_window_index - 1)) -t "$new_window_index"
+
+nvim $selected
