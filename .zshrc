@@ -129,3 +129,24 @@ eval "$(direnv hook zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+exec_pod() {
+  local pod=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" | fzf)
+  if [[ -z $pod ]]; then
+    echo "Usage: execpod <pod-name>"
+    return 1
+  fi
+  kubectl exec -it "$pod" bash
+}
+
+exec_container() {
+  local container=$(docker ps --format '{{.Names}}' | fzf)
+  if [[ -z $pod ]]; then
+    echo "Usage: execpod <pod-name>"
+    return 1
+  fi
+  docker exec -it "$pod" bash
+}
+
+alias ox=exec_pod
+alias cx=exec_container
